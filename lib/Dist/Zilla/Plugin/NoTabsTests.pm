@@ -5,6 +5,22 @@ use Moose;
 use namespace::autoclean;
 
 extends 'Dist::Zilla::Plugin::InlineFiles';
+with 'Dist::Zilla::Role::PrereqSource';
+
+sub register_prereqs
+{
+    my $self = shift;
+    $self->zilla->register_prereqs(
+        {
+            type  => 'requires',
+            phase => 'develop',
+        },
+        'Test::More' => 0,
+        'Test::NoTabs' => 0,
+    );
+}
+
+=pod
 
 =head1 DESCRIPTION
 
