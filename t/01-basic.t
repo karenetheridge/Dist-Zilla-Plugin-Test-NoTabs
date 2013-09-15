@@ -7,9 +7,9 @@ use Test::DZil;
 use Path::Tiny;
 
 BEGIN {
-    use Dist::Zilla::Plugin::NoTabsTests;
-    $Dist::Zilla::Plugin::NoTabsTests::VERSION = 9999
-        unless $Dist::Zilla::Plugin::NoTabsTests::VERSION;
+    use Dist::Zilla::Plugin::Test::NoTabs;
+    $Dist::Zilla::Plugin::Test::NoTabs::VERSION = 9999
+        unless $Dist::Zilla::Plugin::Test::NoTabs::VERSION;
 }
 
 
@@ -20,7 +20,7 @@ my $tzil = Builder->from_config(
             'source/dist.ini' => simple_ini(
                 [ GatherDir => ],
                 [ ExecDir => ],
-                [ NoTabsTests => ],
+                [ 'Test::NoTabs' => ],
             ),
             path(qw(source lib Foo.pm)) => <<'MODULE',
 package Foo;

@@ -1,3 +1,4 @@
 /.build/
 !.gitignore
 /Dist-Zilla-Plugin-NoTabsTests-*
+/Dist-Zilla-Plugin-Test-NoTabs-*
