@@ -1,4 +1,3 @@
-.*
+/.build/
 !.gitignore
-Dist-Zilla-Plugin-NoTabsTests-*
-Debian_CPANTS.txt
+/Dist-Zilla-Plugin-NoTabsTests-*
