@@ -91,6 +91,11 @@ __PACKAGE__->meta->make_immutable;
 
 =pod
 
+=for Pod::Coverage::TrustPod
+    register_prereqs
+    gather_files
+    munge_file
+
 =head1 SYNOPSIS
 
 In your F<dist.ini>:
