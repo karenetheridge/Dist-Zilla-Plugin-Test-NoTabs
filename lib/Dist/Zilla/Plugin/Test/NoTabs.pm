@@ -107,7 +107,7 @@ In your F<dist.ini>:
 =head1 DESCRIPTION
 
 This is a plugin that runs at the L<gather files|Dist::Zilla::Role::FileGatherer> stage,
-providing the file F<xt/release/no-tabs.t>, a standard Test::NoTabs test.
+providing the file F<xt/release/no-tabs.t>, a standard L<Test::NoTabs> test.
 
 This plugin accepts the following options:
 
