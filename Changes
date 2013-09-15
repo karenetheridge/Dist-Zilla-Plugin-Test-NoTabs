@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.02      2013-09-15 03:24:28Z (Karen Etheridge)
     - now dies if Test::NoTabs is not present, rather than skipping test
     - develop require prerequisites are now injected into the distribution
     - now includes the list of files to check inside the test, allowing
