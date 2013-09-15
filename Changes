@@ -1,6 +1,10 @@
 
   * now dies if Test::NoTabs is not present, rather than skipping test
   * develop require prerequisites are now injected into the distribution
+  * now includes the list of files to check inside the test, allowing
+    customization of files to search via filefinder options; also works around
+    issue with Test::NoTabs that tests nothing when the test is two levels
+    deep from the dist root (RT#88042)
 
 0.01  Sat, 29 May 2010 17:02:08 +0200
   * Split off of Dist::Zilla::Plugin::SanityTests.
