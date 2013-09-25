@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+    - re-release with fixed compile test
 
 0.02      2013-09-15 03:24:28Z (Karen Etheridge)
     - now dies if Test::NoTabs is not present, rather than skipping test
