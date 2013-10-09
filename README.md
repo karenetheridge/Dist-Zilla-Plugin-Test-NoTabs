@@ -4,7 +4,7 @@ Dist::Zilla::Plugin::Test::NoTabs - Release tests making sure hard tabs aren't u
 
 # VERSION
 
-version 0.04
+version 0.05
 
 # SYNOPSIS
 
