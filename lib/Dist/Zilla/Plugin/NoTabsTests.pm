@@ -8,7 +8,7 @@ use namespace::autoclean;
 
 # don't start warning just yet - give people a little bit of time to update
 #before register_component => sub {
-#  warn "!!! [NoTabsTests] is deprecated and may be removed in a future release; replace it with [Test::Compile]\n";
+#    warn "!!! [NoTabsTests] is deprecated and may be removed in a future release; replace it with [Test::NoTabs]\n";
 #};
 
 __PACKAGE__->meta->make_immutable;
@@ -30,8 +30,8 @@ This is a plugin that runs at the L<gather files|Dist::Zilla::Role::FileGatherer
 providing the file F<xt/release/no-tabs.t>, a standard L<Test::NoTabs> test.
 
 THIS MODULE IS DEPRECATED. Please use
-L<Dist::Zilla::Plugin::Test::NoTabsTests> instead. it may be removed at a
-later time.
+L<Dist::Zilla::Plugin::Test::NoTabs> instead. it may be removed at a
+later time (but not before June 2014).
 
 In the meantime, it will continue working -- although (soon) with a warning.
 Refer to the replacement for the actual documentation.
