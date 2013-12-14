@@ -4,7 +4,7 @@ Dist::Zilla::Plugin::Test::NoTabs - Release tests making sure hard tabs aren't u
 
 # VERSION
 
-version 0.05
+version 0.06
 
 # SYNOPSIS
 
@@ -16,27 +16,30 @@ In your `dist.ini`:
 
 # DESCRIPTION
 
-This is a plugin that runs at the [gather files](http://search.cpan.org/perldoc?Dist::Zilla::Role::FileGatherer) stage,
-providing the file `xt/release/no-tabs.t`, a standard [Test::NoTabs](http://search.cpan.org/perldoc?Test::NoTabs) test.
+This is a plugin that runs at the [gather files](https://metacpan.org/pod/Dist::Zilla::Role::FileGatherer) stage,
+providing the file `xt/release/no-tabs.t`, a standard [Test::NoTabs](https://metacpan.org/pod/Test::NoTabs) test.
 
 This plugin accepts the following options:
 
 - `module_finder`
 
-    This is the name of a [FileFinder](http://search.cpan.org/perldoc?Dist::Zilla::Role::FileFinder) for finding
+    This is the name of a [FileFinder](https://metacpan.org/pod/Dist::Zilla::Role::FileFinder) for finding
     modules to check.  The default value is `:InstallModules`; this option can be
     used more than once.
 
     Other predefined finders are listed in
-    ["default\_finders" in Dist::Zilla::Role::FileFinderUser](http://search.cpan.org/perldoc?Dist::Zilla::Role::FileFinderUser#default\_finders).
+    ["default_finders" in Dist::Zilla::Role::FileFinderUser](https://metacpan.org/pod/Dist::Zilla::Role::FileFinderUser#default_finders).
     You can define your own with the
-    [\[FileFinder::ByName\]](http://search.cpan.org/perldoc?Dist::Zilla::Plugin::FileFinder::ByName) plugin.
+    [[FileFinder::ByName]](https://metacpan.org/pod/Dist::Zilla::Plugin::FileFinder::ByName) plugin.
 
 - `script_finder`
 
     Just like `module_finder`, but for finding scripts.  The default value is
-    `:ExecFiles` (see also [Dist::Zilla::Plugin::ExecDir](http://search.cpan.org/perldoc?Dist::Zilla::Plugin::ExecDir), to make sure these
+    `:ExecFiles` (see also [Dist::Zilla::Plugin::ExecDir](https://metacpan.org/pod/Dist::Zilla::Plugin::ExecDir), to make sure these
     files are properly marked as executables for the installer).
+
+- `file`: a filename to also test, in addition to any files found
+earlier. This option can be repeated to specify multiple additional files.
 
 # AUTHOR
 
