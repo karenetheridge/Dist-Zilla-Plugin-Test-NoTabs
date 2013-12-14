@@ -7,8 +7,9 @@ extends 'Dist::Zilla::Plugin::Test::NoTabs';
 use namespace::autoclean;
 
 # don't start warning just yet - give people a little bit of time to update
+# warning will be added on Jan 1 2014.
 #before register_component => sub {
-#    warn "!!! [NoTabsTests] is deprecated and may be removed in a future release; replace it with [Test::NoTabs]\n";
+#    warn "!!! [NoTabsTests] is deprecated and will be removed in a future release; replace it with [Test::NoTabs]\n";
 #};
 
 __PACKAGE__->meta->make_immutable;
