@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+    - new 'file' option, for adding extra files to be checked
 
 0.05      2013-10-09 16:07:32Z
     - documentation fix: misspelled plugin name in [NoTabsTests]

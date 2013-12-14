@@ -24,6 +24,17 @@ with
     },
     'Dist::Zilla::Role::PrereqSource';
 
+has files => (
+    isa => 'ArrayRef[Str]',
+    traits => ['Array'],
+    handles => { files => 'elements' },
+    lazy => 1,
+    default => sub { [] },
+);
+
+sub mvp_multivalue_args { qw(files) }
+sub mvp_aliases { return { file => 'files' } }
+
 around dump_config => sub
 {
     my ($orig, $self) = @_;
@@ -71,6 +82,7 @@ sub munge_file
 
     my @filenames = map { path($_->name)->relative('.')->stringify }
         (@{ $self->found_module_files }, @{ $self->found_script_files });
+    push @filenames, $self->files;
 
     $self->log_debug('adding file ' . $_) foreach @filenames;
 
@@ -92,6 +104,7 @@ __PACKAGE__->meta->make_immutable;
 =pod
 
 =for Pod::Coverage::TrustPod
+    mvp_aliases
     register_prereqs
     gather_files
     munge_file
@@ -133,6 +146,9 @@ L<[FileFinder::ByName]|Dist::Zilla::Plugin::FileFinder::ByName> plugin.
 Just like C<module_finder>, but for finding scripts.  The default value is
 C<:ExecFiles> (see also L<Dist::Zilla::Plugin::ExecDir>, to make sure these
 files are properly marked as executables for the installer).
+
+=item * C<file>: a filename to also test, in addition to any files found
+earlier. This option can be repeated to specify multiple additional files.
 
 =back
 
