@@ -18,7 +18,7 @@ my $tzil = Builder->from_config(
     { dist_root => 't/does-not-exist' },
     {
         add_files => {
-            'source/dist.ini' => simple_ini(
+            path(qw(source dist.ini)) => simple_ini(
                 [ GatherDir => ],
                 [ ExecDir => ],
                 [ 'Test::NoTabs' => ],
@@ -46,11 +46,11 @@ SCRIPT
 
 $tzil->build;
 
-my $build_dir = $tzil->tempdir->subdir('build');
-my $file = path($build_dir, qw(xt release no-tabs.t));
+my $build_dir = path($tzil->tempdir)->child('build');
+my $file = $build_dir->child(qw(xt release no-tabs.t));
 ok( -e $file, 'test created');
 
-my $content = $file->slurp;
+my $content = $file->slurp_utf8;
 unlike($content, qr/[^\S\n]\n/m, 'no trailing whitespace in generated test');
 unlike($content, qr/\t/m, 'no tabs in generated test');
 
