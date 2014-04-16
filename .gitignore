@@ -1,5 +1,6 @@
 /.build/
 !.gitignore
+/.latest
 /Dist-Zilla-Plugin-NoTabsTests-*
 /Dist-Zilla-Plugin-Test-NoTabs-*
 /tmp/
