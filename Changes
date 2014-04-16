@@ -5,6 +5,7 @@ Revision history for {{$dist->name}}
       the repository source, for easier debugging
     - formally deprecated [NoTabsTests] (it will continue to exist through
       October 2014).
+    - now once again scanning t/ files (broken since v0.02)
 
 0.06      2013-12-14 21:46:23Z
     - new 'file' option, for adding extra files to be checked

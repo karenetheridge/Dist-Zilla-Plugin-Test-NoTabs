@@ -22,7 +22,9 @@ with
     'Dist::Zilla::Role::FileFinderUser' => {
         method          => 'found_script_files',
         finder_arg_names => [ 'script_finder' ],
-        default_finders => [ ':ExecFiles' ],
+        default_finders => [ ':ExecFiles', ':TestFiles' ],
+            # TODO: really ought to be scanning xt/ as well; best to wait
+            # until we have a builtin finder that can do that
     },
     'Dist::Zilla::Role::PrereqSource';
 
@@ -151,8 +153,7 @@ L<[FileFinder::ByName]|Dist::Zilla::Plugin::FileFinder::ByName> plugin.
 =for stopwords executables
 
 Just like C<module_finder>, but for finding scripts.  The default value is
-C<:ExecFiles> (see also L<Dist::Zilla::Plugin::ExecDir>, to make sure these
-files are properly marked as executables for the installer).
+C<:ExecFiles> (see also L<Dist::Zilla::Plugin::ExecDir>) and C<:TestFiles>.
 
 =item * C<file>: a filename to also test, in addition to any files found
 earlier. This option can be repeated to specify multiple additional files.
