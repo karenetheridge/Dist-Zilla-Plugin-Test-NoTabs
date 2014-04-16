@@ -7,6 +7,7 @@ use Path::Tiny;
 use Sub::Exporter::ForMethods 'method_installer'; # method_installer returns a sub.
 use Data::Section 0.004 # fixed header_re
     { installer => method_installer }, '-setup';
+use Moose::Util::TypeConstraints;
 use namespace::autoclean;
 
 with
@@ -31,6 +32,10 @@ has files => (
     handles => { files => 'elements' },
     lazy => 1,
     default => sub { [] },
+);
+
+has _file_obj => (
+    is => 'rw', isa => role_type('Dist::Zilla::Role::File'),
 );
 
 sub mvp_multivalue_args { qw(files) }
@@ -67,19 +72,20 @@ sub gather_files
 
     require Dist::Zilla::File::InMemory;
 
-    $self->add_file( Dist::Zilla::File::InMemory->new(
-        name => 'xt/release/no-tabs.t',
-        content => ${$self->section_data('xt/release/no-tabs.t')},
-    ));
+    $self->add_file(
+        $self->_file_obj(
+            Dist::Zilla::File::InMemory->new(
+            name => 'xt/release/no-tabs.t',
+            content => ${$self->section_data('xt/release/no-tabs.t')},
+        ))
+    );
 }
 
-sub munge_file
+sub munge_files
 {
-    my ($self, $file) = @_;
+    my $self = shift;
 
-    my $filename = $file->name;
-    return unless $filename eq 'xt/release/no-tabs.t'
-        or $filename eq 't/release-no-tabs.t';  # ExtraTests may have renamed us
+    my $file = $self->_file_obj;
 
     my @filenames = map { path($_->name)->relative('.')->stringify }
         (@{ $self->found_module_files }, @{ $self->found_script_files });
@@ -108,7 +114,7 @@ __PACKAGE__->meta->make_immutable;
     mvp_aliases
     register_prereqs
     gather_files
-    munge_file
+    munge_files
 
 =head1 SYNOPSIS
 
