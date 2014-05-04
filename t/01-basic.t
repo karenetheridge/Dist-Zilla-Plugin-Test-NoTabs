@@ -40,6 +40,12 @@ use strict;
 use warnings;
 print "hello there!\n";
 SCRIPT
+            path(qw(source t foo.t)) => <<'TEST',
+use strict;
+use warnings;
+use Test::More tests => 1;
+pass('hi!');
+TEST
         },
     },
 );
@@ -58,6 +64,7 @@ my @files = (
     path(qw(lib Foo.pm)),
     path(qw(lib Bar.pod)),
     path(qw(bin myscript)),
+    path(qw(t foo.t)),
 );
 
 like($content, qr/'\Q$_\E'/m, "test checks $_") foreach @files;
