@@ -15,16 +15,9 @@ with
     'Dist::Zilla::Role::FileMunger',
     'Dist::Zilla::Role::TextTemplate',
     'Dist::Zilla::Role::FileFinderUser' => {
-        method          => 'found_module_files',
-        finder_arg_names => [ 'module_finder' ],
-        default_finders => [ ':InstallModules' ],
-    },
-    'Dist::Zilla::Role::FileFinderUser' => {
-        method          => 'found_script_files',
-        finder_arg_names => [ 'script_finder' ],
-        default_finders => [ ':ExecFiles', ':TestFiles' ],
-            # TODO: really ought to be scanning xt/ as well; best to wait
-            # until we have a builtin finder that can do that
+        method          => 'found_files',
+        finder_arg_names => [ 'finder' ],
+        default_finders => [ ':InstallModules', ':ExecFiles', ':TestFiles' ],
     },
     'Dist::Zilla::Role::PrereqSource';
 
@@ -40,8 +33,37 @@ has _file_obj => (
     is => 'rw', isa => role_type('Dist::Zilla::Role::File'),
 );
 
-sub mvp_multivalue_args { qw(files) }
+sub mvp_multivalue_args { qw(files module_finder script_finder) }
 sub mvp_aliases { return { file => 'files' } }
+
+around BUILDARGS => sub
+{
+    my $orig = shift;
+    my $self = shift;
+    my $args = $self->$orig(@_);
+
+    my $module_finder = delete $args->{module_finder};
+    my $script_finder = delete $args->{script_finder};
+
+    # handle legacy args
+    if ($module_finder or $script_finder)
+    {
+        $args->{zilla}->log('folding deprecated options (module_finder, script_finder) into finder');
+        $args->{finder} = [ $args->finder ] if $args->{finder} and not ref $args->{finder};
+
+        push @{$args->{finder}},
+            $module_finder
+                ? (ref $module_finder ? @$module_finder : $module_finder)
+                : ':InstallModules';
+
+        push @{$args->{finder}},
+            $script_finder
+            ? (ref $script_finder ? @$script_finder : $script_finder)
+            : (':ExecFiles', ':TestFiles');
+    }
+
+    return $args;
+};
 
 around dump_config => sub
 {
@@ -49,8 +71,7 @@ around dump_config => sub
     my $config = $self->$orig;
 
     $config->{+__PACKAGE__} = {
-         module_finder => $self->module_finder,
-         script_finder => $self->script_finder,
+         finder => $self->finder,
     };
     return $config;
 };
@@ -90,7 +111,7 @@ sub munge_files
     my $file = $self->_file_obj;
 
     my @filenames = map { path($_->name)->relative('.')->stringify }
-        (@{ $self->found_module_files }, @{ $self->found_script_files });
+        @{ $self->found_files };
     push @filenames, $self->files;
 
     $self->log_debug('adding file ' . $_) foreach @filenames;
@@ -123,8 +144,8 @@ __PACKAGE__->meta->make_immutable;
 In your F<dist.ini>:
 
     [Test::NoTabs]
-    module_finder = my_finder
-    script_finder = other_finder
+    finder = my_finder
+    finder = other_finder
 
 =head1 DESCRIPTION
 
@@ -140,15 +161,15 @@ This plugin accepts the following options:
 =for stopwords FileFinder
 
 This is the name of a L<FileFinder|Dist::Zilla::Role::FileFinder> for finding
-modules to check.  The default value is C<:InstallModules>; this option can be
-used more than once.
+files to check.  The default value is C<:InstallModules>,
+C<:ExecFiles> (see also L<Dist::Zilla::Plugin::ExecDir>) and C<:TestFiles>;
+this option can be used more than once.
 
 Other predefined finders are listed in
 L<Dist::Zilla::Role::FileFinderUser/default_finders>.
 You can define your own with the
 L<[FileFinder::ByName]|Dist::Zilla::Plugin::FileFinder::ByName> plugin.
 
-=item * C<script_finder>
 
 =for stopwords executables
 
