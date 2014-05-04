@@ -98,17 +98,17 @@ sub gather_files
     $self->add_file(
         $self->_file_obj(
             Dist::Zilla::File::InMemory->new(
-            name => 'xt/release/no-tabs.t',
-            content => ${$self->section_data('xt/release/no-tabs.t')},
-        ))
+                name => 'xt/release/no-tabs.t',
+                content => ${$self->section_data('xt/release/no-tabs.t')},
+            )
+        )
     );
+    return;
 }
 
 sub munge_files
 {
     my $self = shift;
-
-    my $file = $self->_file_obj;
 
     my @filenames = map { path($_->name)->relative('.')->stringify }
         @{ $self->found_files };
@@ -116,6 +116,7 @@ sub munge_files
 
     $self->log_debug('adding file ' . $_) foreach @filenames;
 
+    my $file = $self->_file_obj;
     $file->content(
         $self->fill_in_string(
             $file->content,
