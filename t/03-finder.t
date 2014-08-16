@@ -55,7 +55,7 @@ $tzil->chrome->logger->set_debug(1);
 $tzil->build;
 
 my $build_dir = path($tzil->tempdir)->child('build');
-my $file = $build_dir->child(qw(xt release no-tabs.t));
+my $file = $build_dir->child(qw(xt author no-tabs.t));
 ok( -e $file, 'test created');
 
 my $content = $file->slurp_utf8;

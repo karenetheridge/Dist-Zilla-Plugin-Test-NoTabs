@@ -22,6 +22,12 @@ with
     },
     'Dist::Zilla::Role::PrereqSource';
 
+has filename => (
+    is => 'ro', isa => 'Str',
+    lazy => 1,
+    default => sub { return 'xt/author/no-tabs.t' },
+);
+
 has files => (
     isa => 'ArrayRef[Str]',
     traits => ['Array'],
@@ -73,6 +79,7 @@ around dump_config => sub
 
     $config->{+__PACKAGE__} = {
          finder => $self->finder,
+         filename => $self->filename,
     };
     return $config;
 };
@@ -99,8 +106,8 @@ sub gather_files
     $self->add_file(
         $self->_file_obj(
             Dist::Zilla::File::InMemory->new(
-                name => 'xt/author/no-tabs.t',
-                content => ${$self->section_data('xt/author/no-tabs.t')},
+                name => $self->filename,
+                content => ${$self->section_data('__TEST__')},
             )
         )
     );
@@ -182,10 +189,14 @@ C<:ExecFiles> (see also L<Dist::Zilla::Plugin::ExecDir>) and C<:TestFiles>.
 a filename to also test, in addition to any files found
 earlier. This option can be repeated to specify multiple additional files.
 
+=head2 C<filename>
+
+The filename of the test to add - defaults to F<xt/author/no-tabs.t>.
+
 =cut
 
 __DATA__
-___[ xt/author/no-tabs.t ]___
+___[ __TEST__ ]___
 use strict;
 use warnings;
 

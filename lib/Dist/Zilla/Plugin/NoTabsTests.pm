@@ -10,6 +10,10 @@ before register_component => sub {
     warn "!!! [NoTabsTests] is deprecated and may be removed in a future release; replace it with [Test::NoTabs]\n";
 };
 
+has '+filename' => (
+    default => sub { return 'xt/release/no-tabs.t' },
+);
+
 __PACKAGE__->meta->make_immutable;
 __END__
 
