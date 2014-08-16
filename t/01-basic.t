@@ -6,6 +6,7 @@ use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 use Test::DZil;
 use Path::Tiny;
 use File::pushd 'pushd';
+use Test::Deep;
 
 BEGIN {
     use Dist::Zilla::Plugin::Test::NoTabs;
@@ -21,6 +22,7 @@ my $tzil = Builder->from_config(
             path(qw(source dist.ini)) => simple_ini(
                 [ GatherDir => ],
                 [ ExecDir => ],
+                [ MetaConfig => ],
                 [ 'Test::NoTabs' => ],
             ),
             path(qw(source lib Foo.pm)) => <<'MODULE',
@@ -69,6 +71,36 @@ my @files = (
 );
 
 like($content, qr/'\Q$_\E'/m, "test checks $_") foreach @files;
+
+cmp_deeply(
+    $tzil->distmeta,
+    superhashof({
+        prereqs => {
+            develop => {
+                requires => {
+                    'Test::More' => '0',
+                    'Test::NoTabs' => '0',
+                },
+            },
+        },
+        x_Dist_Zilla => superhashof({
+            plugins => supersetof(
+                {
+                    class => 'Dist::Zilla::Plugin::Test::NoTabs',
+                    config => {
+                        'Dist::Zilla::Plugin::Test::NoTabs' => {
+                            finder => [ ':InstallModules', ':ExecFiles', ':TestFiles' ],
+                        },
+                    },
+                    name => 'Test::NoTabs',
+                    version => ignore,
+                },
+            ),
+        }),
+    }),
+    'prereqs are properly injected for the develop phase; dumped configs are good',
+) or diag 'got distmeta: ', explain $tzil->distmeta;
+
 
 # not needed, but Test::NoTabs loads it from the generated test, and $0 is wrong for it
 # (FIXME in Test::NoTabs!!)
