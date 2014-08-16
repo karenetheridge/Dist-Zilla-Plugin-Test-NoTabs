@@ -99,8 +99,8 @@ sub gather_files
     $self->add_file(
         $self->_file_obj(
             Dist::Zilla::File::InMemory->new(
-                name => 'xt/release/no-tabs.t',
-                content => ${$self->section_data('xt/release/no-tabs.t')},
+                name => 'xt/author/no-tabs.t',
+                content => ${$self->section_data('xt/author/no-tabs.t')},
             )
         )
     );
@@ -152,13 +152,13 @@ In your F<dist.ini>:
 =head1 DESCRIPTION
 
 This is a plugin that runs at the L<gather files|Dist::Zilla::Role::FileGatherer> stage,
-providing the file F<xt/release/no-tabs.t>, a standard L<Test::NoTabs> test.
+providing the file F<xt/author/no-tabs.t>, a standard L<Test::NoTabs> test.
+
+=head1 CONFIGURATION OPTIONS
 
 This plugin accepts the following options:
 
-=over 4
-
-=item * C<module_finder>
+=head2 C<module_finder>
 
 =for stopwords FileFinder
 
@@ -172,21 +172,20 @@ L<Dist::Zilla::Role::FileFinderUser/default_finders>.
 You can define your own with the
 L<[FileFinder::ByName]|Dist::Zilla::Plugin::FileFinder::ByName> plugin.
 
-
 =for stopwords executables
 
 Just like C<module_finder>, but for finding scripts.  The default value is
 C<:ExecFiles> (see also L<Dist::Zilla::Plugin::ExecDir>) and C<:TestFiles>.
 
-=item * C<file>: a filename to also test, in addition to any files found
-earlier. This option can be repeated to specify multiple additional files.
+=head2 C<file>
 
-=back
+a filename to also test, in addition to any files found
+earlier. This option can be repeated to specify multiple additional files.
 
 =cut
 
 __DATA__
-___[ xt/release/no-tabs.t ]___
+___[ xt/author/no-tabs.t ]___
 use strict;
 use warnings;
 
