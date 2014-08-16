@@ -1,5 +1,6 @@
 package Dist::Zilla::Plugin::Test::NoTabs;
 # ABSTRACT: Release tests making sure hard tabs aren't used
+# KEYWORDS: plugin test testing whitespace tab formatting
 # vim: set ts=8 sw=4 tw=78 et :
 
 use Moose;
