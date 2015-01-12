@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.10      2015-01-12 04:58:24Z
     - now skipping testing files declared as having 'bytes' encoding
 
 0.09      2014-08-16 23:14:24Z
