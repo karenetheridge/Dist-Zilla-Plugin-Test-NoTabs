@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+    - now skipping testing files declared as having 'bytes' encoding
 
 0.09      2014-08-16 23:14:24Z
     - generated test file now defaults to xt/author/no-tabs.t, but is
