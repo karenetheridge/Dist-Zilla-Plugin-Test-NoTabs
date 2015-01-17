@@ -119,7 +119,7 @@ sub munge_files
     my $self = shift;
 
     my @filenames = map { path($_->name)->relative('.')->stringify }
-        grep { not $_->is_bytes }
+        grep { $_->can('is_bytes') and not $_->is_bytes }
         @{ $self->found_files };
     push @filenames, $self->files;
 
