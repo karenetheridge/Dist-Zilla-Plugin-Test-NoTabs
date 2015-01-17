@@ -49,10 +49,9 @@ around BUILDARGS => sub
     my $self = shift;
     my $args = $self->$orig(@_);
 
+    # handle legacy args
     my $module_finder = delete $args->{module_finder};
     my $script_finder = delete $args->{script_finder};
-
-    # handle legacy args
     if ($module_finder or $script_finder)
     {
         $args->{zilla}->log('folding deprecated options (module_finder, script_finder) into finder');
