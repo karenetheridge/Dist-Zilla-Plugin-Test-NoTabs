@@ -166,7 +166,7 @@ providing the file F<xt/author/no-tabs.t>, a standard L<Test::NoTabs> test.
 
 This plugin accepts the following options:
 
-=head2 C<module_finder>
+=head2 C<finder>
 
 =for stopwords FileFinder
 
@@ -179,11 +179,6 @@ Other predefined finders are listed in
 L<Dist::Zilla::Role::FileFinderUser/default_finders>.
 You can define your own with the
 L<[FileFinder::ByName]|Dist::Zilla::Plugin::FileFinder::ByName> plugin.
-
-=for stopwords executables
-
-Just like C<module_finder>, but for finding scripts.  The default value is
-C<:ExecFiles> (see also L<Dist::Zilla::Plugin::ExecDir>) and C<:TestFiles>.
 
 =head2 C<file>
 

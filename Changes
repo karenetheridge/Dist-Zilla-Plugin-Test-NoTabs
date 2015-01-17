@@ -3,6 +3,7 @@ Revision history for {{$dist->name}}
 {{$NEXT}}
     - fix error with older Dist::Zilla, before the 'is_bytes' interface was
       added
+    - documentation for the finder option(s) is fixed (RT#101564)
 
 0.10      2015-01-12 04:58:24Z
     - now skipping testing files declared as having 'bytes' encoding
