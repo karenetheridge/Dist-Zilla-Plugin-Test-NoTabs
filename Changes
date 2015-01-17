@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.11      2015-01-17 03:00:45Z
     - fix error with older Dist::Zilla, before the 'is_bytes' interface was
       added
     - documentation for the finder option(s) is fixed (RT#101564)

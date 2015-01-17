@@ -4,11 +4,11 @@
 
 =head1 NAME
 
-Dist::Zilla::Plugin::Test::NoTabs - Release tests making sure hard tabs aren't used
+Dist::Zilla::Plugin::Test::NoTabs - Author tests that ensure hard tabs are not used
 
 =head1 VERSION
 
-version 0.10
+version 0.11
 
 =head1 SYNOPSIS
 
@@ -32,7 +32,7 @@ providing the file F<xt/author/no-tabs.t>, a standard L<Test::NoTabs> test.
 
 This plugin accepts the following options:
 
-=head2 C<module_finder>
+=head2 C<finder>
 
 =for stopwords FileFinder
 
@@ -45,11 +45,6 @@ Other predefined finders are listed in
 L<Dist::Zilla::Role::FileFinderUser/default_finders>.
 You can define your own with the
 L<[FileFinder::ByName]|Dist::Zilla::Plugin::FileFinder::ByName> plugin.
-
-=for stopwords executables
-
-Just like C<module_finder>, but for finding scripts.  The default value is
-C<:ExecFiles> (see also L<Dist::Zilla::Plugin::ExecDir>) and C<:TestFiles>.
 
 =head2 C<file>
 
