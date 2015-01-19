@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.12      2015-01-19 04:14:41Z
     - proper fix for older Dist::Zilla, before the 'is_bytes' interface was
       added
 
