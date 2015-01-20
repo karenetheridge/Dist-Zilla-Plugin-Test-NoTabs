@@ -6,6 +6,8 @@ use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 use Test::DZil;
 use Path::Tiny;
 
+use Test::Requires 'Dist::Zilla::Plugin::Encoding';
+
 BEGIN {
     use Dist::Zilla::Plugin::Test::NoTabs;
     $Dist::Zilla::Plugin::Test::NoTabs::VERSION = 9999
