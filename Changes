@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.13      2015-01-20 02:53:37Z
     - one more fix for the old Dist::Zilla problem :(
 
 0.12      2015-01-19 04:14:41Z
