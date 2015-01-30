@@ -91,8 +91,8 @@ sub register_prereqs
             type  => 'requires',
             phase => 'develop',
         },
-        'Test::More' => 0,
-        'Test::NoTabs' => 0,
+        'Test::More' => '0.88',
+        'Test::NoTabs' => '0',
     );
 }
 

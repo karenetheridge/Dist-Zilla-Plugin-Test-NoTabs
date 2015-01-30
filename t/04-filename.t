@@ -46,7 +46,7 @@ cmp_deeply(
         prereqs => {
             develop => {
                 requires => {
-                    'Test::More' => '0',
+                    'Test::More' => '0.88',
                     'Test::NoTabs' => '0',
                 },
             },
