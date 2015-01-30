@@ -14,7 +14,6 @@ BEGIN {
         unless $Dist::Zilla::Plugin::Test::NoTabs::VERSION;
 }
 
-
 my $tzil = Builder->from_config(
     { dist_root => 't/does-not-exist' },
     {

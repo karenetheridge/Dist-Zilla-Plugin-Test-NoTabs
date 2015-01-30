@@ -138,6 +138,7 @@ sub munge_files
 
     return;
 }
+
 __PACKAGE__->meta->make_immutable;
 
 =pod
