@@ -188,6 +188,12 @@ earlier. This option can be repeated to specify multiple additional files.
 
 The filename of the test to add - defaults to F<xt/author/no-tabs.t>.
 
+=head1 SEE ALSO
+
+=for :list
+* Test::NoTabs
+* Test::Tabs
+
 =cut
 
 __DATA__
