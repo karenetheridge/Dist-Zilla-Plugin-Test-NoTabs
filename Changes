@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+    - remove the use of fatal warnings in tests
 
 0.13      2015-01-20 02:53:37Z
     - one more fix for the old Dist::Zilla problem :(
