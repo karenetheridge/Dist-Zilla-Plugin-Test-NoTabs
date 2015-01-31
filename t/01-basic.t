@@ -102,8 +102,8 @@ cmp_deeply(
 ) or diag 'got distmeta: ', explain $tzil->distmeta;
 
 
-# not needed, but Test::NoTabs loads it from the generated test, and $0 is wrong for it
-# (FIXME in Test::NoTabs!!)
+# not used directly, but Test::NoTabs (preloads it from the generated test,
+# and $0 is wrong for it
 use FindBin;
 
 my $files_tested;
