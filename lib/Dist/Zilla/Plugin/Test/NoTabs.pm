@@ -1,7 +1,7 @@
 package Dist::Zilla::Plugin::Test::NoTabs;
 # ABSTRACT: Author tests that ensure hard tabs are not used
 # KEYWORDS: plugin test testing author development whitespace tab tabstop indent formatting
-# vim: set ts=8 sw=4 tw=78 et :
+# vim: set ts=8 sts=4 sw=4 tw=78 et :
 
 use Moose;
 use Path::Tiny;

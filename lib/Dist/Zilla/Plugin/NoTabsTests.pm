@@ -7,7 +7,9 @@ extends 'Dist::Zilla::Plugin::Test::NoTabs';
 use namespace::autoclean;
 
 before register_component => sub {
-    warn "!!! [NoTabsTests] is deprecated and may be removed in a future release; replace it with [Test::NoTabs]\n";
+    warnings::warnif('deprecated',
+        "!!! [MungeFile::WithData] is deprecated and will be removed in a future release; replace it with [MungeFile::WithDataSection]\n",
+    );
 };
 
 has '+filename' => (
