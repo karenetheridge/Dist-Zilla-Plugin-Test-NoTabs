@@ -3,6 +3,7 @@ Revision history for Dist-Zilla-Plugin-Test-NoTabs
 {{$NEXT}}
     - remove the use of fatal warnings in tests
     - fix the version of the injected test prerequisites
+    - mark Dist::Zilla::Plugin::NoTabsTests as deprecated in metadata
 
 0.13      2015-01-20 02:53:37Z
     - one more fix for the old Dist::Zilla problem :(
