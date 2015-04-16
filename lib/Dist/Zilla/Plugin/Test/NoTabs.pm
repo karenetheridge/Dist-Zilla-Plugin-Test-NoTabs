@@ -3,6 +3,8 @@ package Dist::Zilla::Plugin::Test::NoTabs;
 # KEYWORDS: plugin test testing author development whitespace tab tabstop indent formatting
 # vim: set ts=8 sts=4 sw=4 tw=78 et :
 
+our $VERSION = '0.14';
+
 use Moose;
 use Path::Tiny;
 use Sub::Exporter::ForMethods 'method_installer'; # method_installer returns a sub.
@@ -202,7 +204,7 @@ ___[ __TEST__ ]___
 use strict;
 use warnings;
 
-# this test was generated with {{ ref($plugin) . ' ' . ($plugin->VERSION || '<self>') }}
+# this test was generated with {{ ref($plugin) . ' ' . $plugin->VERSION }}
 
 use Test::More 0.88;
 use Test::NoTabs;

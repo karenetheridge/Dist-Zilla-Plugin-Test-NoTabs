@@ -9,12 +9,6 @@ use File::pushd 'pushd';
 
 use Test::Requires { 'Dist::Zilla::Dist::Builder' => '5.007' }; # for NoFiles
 
-BEGIN {
-    use Dist::Zilla::Plugin::Test::NoTabs;
-    $Dist::Zilla::Plugin::Test::NoTabs::VERSION = 9999
-        unless $Dist::Zilla::Plugin::Test::NoTabs::VERSION;
-}
-
 my $tzil = Builder->from_config(
     { dist_root => 't/does-not-exist' },
     {
