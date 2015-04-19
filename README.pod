@@ -8,7 +8,7 @@ Dist::Zilla::Plugin::Test::NoTabs - Author tests that ensure hard tabs are not u
 
 =head1 VERSION
 
-version 0.13
+version 0.14
 
 =head1 SYNOPSIS
 
@@ -54,6 +54,20 @@ earlier. This option can be repeated to specify multiple additional files.
 =head2 C<filename>
 
 The filename of the test to add - defaults to F<xt/author/no-tabs.t>.
+
+=head1 SEE ALSO
+
+=over 4
+
+=item *
+
+Test::NoTabs
+
+=item *
+
+Test::Tabs
+
+=back
 
 =head1 AUTHOR
 
