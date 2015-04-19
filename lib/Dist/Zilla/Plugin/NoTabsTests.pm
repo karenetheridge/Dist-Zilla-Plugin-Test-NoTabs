@@ -1,7 +1,7 @@
 package Dist::Zilla::Plugin::NoTabsTests;
 # ABSTRACT: (DEPRECATED) Release tests making sure hard tabs aren't used
 
-our $VERSION = '0.14';
+our $VERSION = '0.15';
 
 use Moose;
 extends 'Dist::Zilla::Plugin::Test::NoTabs';
