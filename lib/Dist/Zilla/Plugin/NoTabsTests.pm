@@ -10,7 +10,7 @@ use namespace::autoclean;
 
 before register_component => sub {
     warnings::warnif('deprecated',
-        "!!! [MungeFile::WithData] is deprecated and will be removed in a future release; replace it with [MungeFile::WithDataSection]\n",
+        "!!! [NoTabsTests] is deprecated and will be removed in a future release; replace it with [Test::NoTabs]\n",
     );
 };
 
