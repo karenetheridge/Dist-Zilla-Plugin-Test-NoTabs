@@ -1,6 +1,7 @@
 Revision history for Dist-Zilla-Plugin-Test-NoTabs
 
 {{$NEXT}}
+    - fix deprecation message (thanks, Noel Maddy!)
 
 0.14      2015-04-19 08:30:36Z
     - remove the use of fatal warnings in tests
