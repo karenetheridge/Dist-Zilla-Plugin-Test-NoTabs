@@ -1,5 +1,7 @@
 Revision history for Dist-Zilla-Plugin-Test-NoTabs
 
+{{$NEXT}}
+
 0.15      2015-05-24 00:08:20Z
     - fix deprecation message (thanks, Noel Maddy!)
 

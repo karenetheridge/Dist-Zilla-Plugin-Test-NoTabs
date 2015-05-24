@@ -3,7 +3,7 @@ package Dist::Zilla::Plugin::Test::NoTabs;
 # KEYWORDS: plugin test testing author development whitespace tab tabstop indent formatting
 # vim: set ts=8 sts=4 sw=4 tw=78 et :
 
-our $VERSION = '0.15';
+our $VERSION = '0.16';
 
 use Moose;
 use Path::Tiny;
