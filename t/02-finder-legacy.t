@@ -57,7 +57,7 @@ my $file = $build_dir->child(qw(xt author no-tabs.t));
 ok( -e $file, 'test created');
 
 my $content = $file->slurp_utf8;
-unlike($content, qr/[^\S\n]\n/m, 'no trailing whitespace in generated test');
+unlike($content, qr/[^\S\n]\n/, 'no trailing whitespace in generated test');
 unlike($content, qr/\t/m, 'no tabs in generated test');
 
 like($content, qr/'\Q$_\E'/m, "test checks $_") foreach path(qw(t foo.t));
