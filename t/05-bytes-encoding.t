@@ -1,12 +1,12 @@
 use strict;
 use warnings;
 
-use Test::More;
+use Test::More 0.88;
 use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 use Test::DZil;
 use Path::Tiny;
 
-use Test::Requires 'Dist::Zilla::Plugin::Encoding';
+use Test::Needs 'Dist::Zilla::Plugin::Encoding';
 
 my $tzil = Builder->from_config(
     { dist_root => 'does-not-exist' },

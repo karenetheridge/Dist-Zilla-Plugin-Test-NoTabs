@@ -7,7 +7,7 @@ use Test::DZil;
 use Path::Tiny;
 use File::pushd 'pushd';
 
-use Test::Requires { 'Dist::Zilla::Dist::Builder' => '5.007' }; # for NoFiles
+use Test::Needs { 'Dist::Zilla::Dist::Builder' => '5.007' }; # for NoFiles
 
 my $tzil = Builder->from_config(
     { dist_root => 'does-not-exist' },
