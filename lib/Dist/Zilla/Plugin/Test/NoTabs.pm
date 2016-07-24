@@ -79,8 +79,8 @@ around dump_config => sub
     my $config = $self->$orig;
 
     $config->{+__PACKAGE__} = {
-         finder => $self->finder,
-         filename => $self->filename,
+        finder => $self->finder,
+        filename => $self->filename,
     };
     return $config;
 };
