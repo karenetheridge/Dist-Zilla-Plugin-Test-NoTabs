@@ -91,8 +91,8 @@ sub register_prereqs
     my $self = shift;
     $self->zilla->register_prereqs(
         {
-            type  => 'requires',
             phase => 'develop',
+            type  => 'requires',
         },
         'Test::More' => '0.88',
         'Test::NoTabs' => '0',
