@@ -33,7 +33,7 @@ has filename => (
 has files => (
     isa => 'ArrayRef[Str]',
     traits => ['Array'],
-    handles => { files => 'elements' },
+    handles => { files => 'sort' },
     lazy => 1,
     default => sub { [] },
 );
