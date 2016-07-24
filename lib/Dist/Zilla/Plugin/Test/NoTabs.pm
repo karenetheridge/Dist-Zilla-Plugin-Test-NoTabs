@@ -81,6 +81,7 @@ around dump_config => sub
     $config->{+__PACKAGE__} = {
         finder => $self->finder,
         filename => $self->filename,
+        blessed($self) ne __PACKAGE__ ? ( version => $VERSION ) : (),
     };
     return $config;
 };
