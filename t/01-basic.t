@@ -96,7 +96,7 @@ cmp_deeply(
 ) or diag 'got distmeta: ', explain $tzil->distmeta;
 
 
-# not used directly, but Test::NoTabs (preloads it from the generated test,
+# not used directly, but Test::NoTabs preloads it from the generated test,
 # and $0 is wrong for it
 use FindBin;
 
